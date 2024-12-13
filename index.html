@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0f0f0f;
+            color: #61dafb;
+            text-align: center;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            margin: 20px 0;
+        }
+        #balloons {
+            font-size: 32px;
+            line-height: 1.5;
+        }
+        #heart {
+            color: #ff5555;
+            font-size: 18px;
+            line-height: 1.2;
+            white-space: pre-wrap;
+            margin-top: 20px;
+        }
+        #messageBox {
+            border: 2px solid #61dafb;
+            padding: 20px;
+            margin: 20px;
+            display: inline-block;
+            text-align: left;
+        }
+        .center {
+            text-align: center;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #61dafb;
+            color: #282c34;
+            border: none;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #21a1f1;
+        }
+        .final-message {
+            font-size: 20px;
+            color: #ff5555;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            #balloons {
+                font-size: 24px;
+            }
+            #heart {
+                font-size: 14px;
+            }
+            .btn {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+            .final-message {
+                font-size: 16px;
+            }
+            #messageBox {
+                padding: 15px;
+                margin: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎉 Happy Birthday, Dhupika! 🎉</h1>
+<p>Click the button to start the surprise!</p>
+<button class="btn" onclick="startBirthday()">Start</button>
+
+<div id="balloons"></div>
+<div id="messageBox" style="display: none;"></div>
+<div id="heart"></div>
+<div class="final-message" id="finalMessage"></div>
+
+<script>
+    function startBirthday() {
+        const balloons = [
+            "  🎈 🎈 🎈 🎈 🎈 🎈 🎈 🎈  ",
+            "    🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 ",
+            "       🎈 🎈 🎈 🎈 🎈 🎈 🎈 ",
+            "🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉 🎉"
+        ];
+
+        const balloonDiv = document.getElementById('balloons');
+        const messageBox = document.getElementById('messageBox');
+        const heart = document.getElementById('heart');
+        const finalMessage = document.getElementById('finalMessage');
+
+        let count = 0;
+        const balloonInterval = setInterval(() => {
+            balloonDiv.innerHTML = `<pre>${balloons[count % 4]}</pre>`;
+            count++;
+            if (count >= 10) {
+                clearInterval(balloonInterval);
+                showMessage();
+            }
+        }, 1000);
+    }
+
+    function showMessage() {
+        const messageBox = document.getElementById('messageBox');
+        messageBox.style.display = 'block';
+
+        messageBox.innerHTML = `
+            <h2>🎉 Happy Birthday, Dhupika! 🎉</h2>
+            <p>Wishing you a day filled with joy, happiness, and unforgettable moments! 🥳</p>
+            <pre>
+*******************************************
+*                                         *
+*       🎉 Happy Birthday, Dhupika! 🎉   *
+*                                         *
+*  Wishing you a day filled with joy,     *
+*  happiness, and unforgettable moments!  *
+*                                         *
+*******************************************
+            </pre>
+        `;
+
+        let repeatCount = 0;
+        const repeatInterval = setInterval(() => {
+            messageBox.innerHTML += `<p>${repeatCount + 1}. Happy Birthday, Dhupika! 🎉🎉🎉</p>`;
+            repeatCount++;
+            if (repeatCount >= 50) {
+                clearInterval(repeatInterval);
+                showHeart();
+            }
+        }, 200);
+    }
+
+    function showHeart() {
+        const heart = document.getElementById('heart');
+        heart.innerHTML = `
+    ************          ***********   
+  ****************      ***************  
+ ******************    ***************** 
+ *******************  ******************  
+  *************************************   
+    *********************************     
+      *****************************       
+        *************************         
+          *********************           
+            *****************             
+              *************               
+                *********                 
+                  *****                   
+                    *                     
+        `;
+
+        const finalMessage = document.getElementById('finalMessage');
+        finalMessage.innerHTML = `
+            🎂 Enjoy your special day, babe! 🎂
+            <br><br>
+            Not all gifts come with a name, and not all hearts seek fame. 
+            Just a soul wishing you happiness today and always.
+            <br><br>
+            You'll never want to find me, and even if you try, you won’t. 
+            The search for me will only lead you back to yourself.
+        `;
+    }
+</script>
+
+</body>
+</html>
